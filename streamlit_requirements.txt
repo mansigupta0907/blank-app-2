@@ -1,4 +1,22 @@
-streamlit>=1.30
-pandas>=2.0
-plotly>=5.18
-numpy>=1.24
+import streamlit as st
+
+st.header("📊 Power BI Report Snapshots")
+
+# List your 6 screenshot files here (update paths/captions to match yours)
+snapshots = [
+    ("page1.png", "Page 1: Overview"),
+    ("page2.png", "Page 2: Sales Trends"),
+    ("page3.png", "Page 3: Product Performance"),
+    ("page4.png", "Page 4: Regional Analysis"),
+    ("page5.png", "Page 5: Customer Insights"),
+    ("page6.png", "Page 6: Summary"),
+]
+
+# Display 3 images per row
+cols_per_row = 3
+for i in range(0, len(snapshots), cols_per_row):
+    row_images = snapshots[i:i + cols_per_row]
+    cols = st.columns(cols_per_row)
+    for col, (img_path, caption) in zip(cols, row_images):
+        with col:
+            st.image(img_path, caption=caption, use_container_width=True)
